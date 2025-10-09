@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pandas
+langgraph
+langchain
+langchain-openai
+langchain-community
+scikit-learn
+numpy
+openai
+python-dotenv
+
