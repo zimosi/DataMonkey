@@ -1,0 +1,134 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-section {
+  max-width: 800px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.file-upload-area {
+  margin: 20px 0;
+}
+
+.file-upload-label {
+  display: inline-block;
+  padding: 20px;
+  border: 2px dashed #61dafb;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgba(97, 218, 251, 0.1);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #61dafb;
+}
+
+.file-upload-label:hover {
+  background-color: rgba(97, 218, 251, 0.2);
+  border-color: #21a0c4;
+}
+
+.file-info {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.upload-button {
+  background: linear-gradient(45deg, #61dafb, #21a0c4);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+}
+
+.upload-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reset-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.status-message {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  color: #61dafb;
+  font-weight: bold;
+}
+
+.analysis-results {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.analysis-results h3 {
+  color: #61dafb;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.llm-response {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #61dafb;
+}
+
+.llm-response pre {
+  color: #ffffff;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
