@@ -40,12 +40,6 @@ Column names: {', '.join(df.columns.tolist())}
 
 Data preview:
 {csv_preview}
-
-Please provide:
-1. A brief description of what this dataset appears to contain
-2. Key observations about the data
-3. Any patterns or insights you notice
-4. Suggestions for potential analysis or machine learning tasks
 """
             
             # Call OpenAI API
