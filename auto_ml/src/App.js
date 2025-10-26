@@ -6,6 +6,10 @@ function App() {
   const [uploadStatus, setUploadStatus] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [llmResponse, setLlmResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
+  const [jobId, setJobId] = useState('');
+  const [llmResponse_data_analysis, setLlmResponse_data_analysis] = useState('');
+  const [plots, setPlots] = useState('');
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -41,6 +45,7 @@ function App() {
       });
 
       const result = await response.json();
+      setJobId(result.job_id);
 
       if (response.ok) {
         setUploadStatus('Analysis completed successfully!');
@@ -64,6 +69,41 @@ function App() {
     const fileInput = document.getElementById('fileInput');
     if (fileInput) fileInput.value = '';
   };
+
+  const handlePrompt = async () => {
+    if (!prompt) {
+      setUploadStatus('Please enter a prompt first.');
+      return;
+    }
+    try {
+      const response = await fetch('http://localhost:8000/api/prompt', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          prompt: prompt.trim(), 
+          jobId: jobId })
+      });
+      const result = await response.json();
+      
+      // Get the last plot from the array (if any plots exist)
+      if (result.plots && result.plots.length > 0) {
+        const plotPath = result.plots[result.plots.length - 1];
+        // Make sure it's a full URL
+        const plotUrl = plotPath.startsWith('http') 
+          ? plotPath 
+          : `http://localhost:8000/${plotPath}`;
+        setPlots(plotUrl);
+      }
+      
+      setLlmResponse_data_analysis(result.result);
+
+    } catch (error) {
+      setUploadStatus(`Error: ${error.message}`);
+    }
+  };
+
 
   return (
     <div className="App">
@@ -105,18 +145,33 @@ function App() {
             </button>
           </div>
 
-          {uploadStatus && (
-            <div className="status-message">
-              {uploadStatus}
-            </div>
-          )}
+
 
           {llmResponse && (
             <div className="analysis-results">
-              <h3>🤖 AI Analysis Results</h3>
               <div className="llm-response">
                 <pre>{llmResponse}</pre>
               </div>
+            </div>
+          )}
+
+          {uploadStatus && (
+            <div className="status-message">
+              <input type="text" placeholder="Enter a prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+              <button onClick={handlePrompt} disabled={!prompt || isUploading}>submit</button>
+            </div>
+          )}
+          {llmResponse_data_analysis && (
+            <div className="analysis-results">
+              <div className="llm-response">
+                <pre>{llmResponse_data_analysis}</pre>
+              </div>
+            </div>
+          )}
+          {plots && (
+            <div className="analysis-results">
+              <h3>Generated Plot:</h3>
+              <img src={plots} alt="Data Visualization" style={{ maxWidth: '100%', height: 'auto' }} />
             </div>
           )}
         </div>

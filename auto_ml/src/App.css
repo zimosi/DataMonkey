@@ -93,14 +93,7 @@
   transform: translateY(-2px);
 }
 
-.status-message {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 8px;
-  margin: 15px 0;
-  color: #61dafb;
-  font-weight: bold;
-}
+
 
 .analysis-results {
   background-color: rgba(255, 255, 255, 0.1);
@@ -131,4 +124,62 @@
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
+}
+
+.status-message {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.status-message input[type="text"] {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 20px;
+  border: 2px solid #61dafb;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.status-message input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.status-message input[type="text"]:focus {
+  border-color: #21a0c4;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+}
+
+.status-message button {
+  background: linear-gradient(45deg, #61dafb, #21a0c4);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.status-message button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+}
+
+.status-message button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
