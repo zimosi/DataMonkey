@@ -1,0 +1,97 @@
+{
+  "job_id": "868681c4-6255-4ab4-acf2-933488a8b4cb",
+  "nodes": [
+    {
+      "id": "data_understanding",
+      "type": "main_agent",
+      "label": "Data Understanding",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 50
+      },
+      "status": "completed",
+      "created_by": null,
+      "reason": "Analyze dataset semantics and structure",
+      "updated_at": "2025-11-30T20:11:54.125930"
+    },
+    {
+      "id": "preprocessing",
+      "type": "main_agent",
+      "label": "Preprocessing",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 200
+      },
+      "status": "completed",
+      "created_by": null,
+      "reason": "Clean and prepare data",
+      "updated_at": "2025-11-30T20:11:56.507853"
+    },
+    {
+      "id": "model_selection",
+      "type": "main_agent",
+      "label": "Model Selection",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 350
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Train and compare ML models"
+    },
+    {
+      "id": "hyperparameter_tuning",
+      "type": "main_agent",
+      "label": "Hyperparameter Tuning",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 500
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Optimize model parameters"
+    },
+    {
+      "id": "prediction",
+      "type": "main_agent",
+      "label": "Prediction",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 650
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Generate predictions"
+    }
+  ],
+  "edges": [
+    {
+      "from": "data_understanding",
+      "to": "preprocessing",
+      "type": "sequential"
+    },
+    {
+      "from": "preprocessing",
+      "to": "model_selection",
+      "type": "sequential"
+    },
+    {
+      "from": "model_selection",
+      "to": "hyperparameter_tuning",
+      "type": "sequential"
+    },
+    {
+      "from": "hyperparameter_tuning",
+      "to": "prediction",
+      "type": "sequential"
+    }
+  ],
+  "node_count": 5,
+  "main_agent_count": 5,
+  "sub_agent_count": 0
+}

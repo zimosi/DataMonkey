@@ -13,3 +13,18 @@ OPENAI_TEMPERATURE = float(os.getenv("OPENAI_TEMPERATURE", "0.1"))
 # Validate required configuration
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY environment variable is required. Please set it in your .env file or environment.")
+
+
+def get_openai_config():
+    """
+    Get OpenAI configuration as a dictionary
+
+    Returns:
+        dict: Configuration dictionary with model, temperature, and max_tokens
+    """
+    return {
+        "model": OPENAI_MODEL,
+        "temperature": OPENAI_TEMPERATURE,
+        "max_tokens": OPENAI_MAX_TOKENS,
+        "api_key": OPENAI_API_KEY
+    }

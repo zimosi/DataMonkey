@@ -4,10 +4,14 @@ python-multipart
 pandas
 langgraph
 langchain
+langchain-core
 langchain-openai
 langchain-community
 scikit-learn
 numpy
 openai
 python-dotenv
-
+matplotlib
+seaborn
+chromadb
+tiktoken

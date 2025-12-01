@@ -1,185 +1,317 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.upload-section {
-  max-width: 800px;
-  width: 100%;
-  margin: 20px 0;
+.App-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.file-upload-area {
-  margin: 20px 0;
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.file-upload-label {
-  display: inline-block;
-  padding: 20px;
-  border: 2px dashed #61dafb;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: rgba(97, 218, 251, 0.1);
-  transition: all 0.3s ease;
-  font-size: 16px;
-  color: #61dafb;
+.App-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.file-upload-label:hover {
-  background-color: rgba(97, 218, 251, 0.2);
-  border-color: #21a0c4;
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-weight: 300;
 }
 
-.file-info {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 8px;
-  margin: 15px 0;
-  text-align: left;
-}
-
-.button-group {
+/* View Mode Toggle */
+.view-mode-toggle {
   display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin: 20px 0;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 8px;
 }
 
-.upload-button {
-  background: linear-gradient(45deg, #61dafb, #21a0c4);
+.view-mode-toggle button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.view-mode-toggle button.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-mode-toggle button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Chat Action Button */
+.chat-action {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.chat-button {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
-  cursor: pointer;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.upload-button:hover:not(:disabled) {
+.chat-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.upload-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.reset-button {
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
+.upload-view {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
 }
 
-.reset-button:hover {
-  background-color: #5a6268;
-  transform: translateY(-2px);
-}
-
-
-
-.analysis-results {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px 0;
-  text-align: left;
-}
-
-.analysis-results h3 {
-  color: #61dafb;
-  margin-bottom: 15px;
+.action-section {
+  margin-top: 2rem;
   text-align: center;
 }
 
-.llm-response {
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 15px;
-  border-radius: 8px;
-  border-left: 4px solid #61dafb;
-}
-
-.llm-response pre {
-  color: #ffffff;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.status-message {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px 0;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.status-message input[type="text"] {
-  flex: 1;
-  min-width: 250px;
-  padding: 12px 20px;
-  border: 2px solid #61dafb;
-  border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.status-message input[type="text"]::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.status-message input[type="text"]:focus {
-  border-color: #21a0c4;
-  background-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
-}
-
-.status-message button {
-  background: linear-gradient(45deg, #61dafb, #21a0c4);
+.run-pipeline-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
   transition: all 0.3s ease;
-  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-.status-message button:hover:not(:disabled) {
+.run-pipeline-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-.status-message button:disabled {
+.run-pipeline-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.pipeline-view {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.pipeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.pipeline-header h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.pipeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-button {
+  background: #fff;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #667eea;
+  color: white;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #9e9e9e;
+}
+
+.status-dot.running {
+  background-color: #ff9800;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-dot.idle {
+  background-color: #4caf50;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pipeline-container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 2rem;
+  min-height: 600px;
+}
+
+.graph-section {
+  border-right: 2px solid #f0f0f0;
+  padding-right: 2rem;
+}
+
+.details-section {
+  padding-left: 1rem;
+  overflow-y: auto;
+  max-height: 800px;
+}
+
+.loading-graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.no-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #999;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.App-footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+.App-footer p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+  .pipeline-container {
+    grid-template-columns: 1fr;
+  }
+
+  .graph-section {
+    border-right: none;
+    border-bottom: 2px solid #f0f0f0;
+    padding-right: 0;
+    padding-bottom: 2rem;
+  }
+
+  .details-section {
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .upload-view {
+    padding: 1.5rem;
+  }
+
+  .pipeline-view {
+    padding: 1rem;
+  }
+
+  .pipeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }

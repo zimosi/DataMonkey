@@ -1,0 +1,151 @@
+{
+  "job_id": "2495b0c3-06dc-47d2-8492-c233d1e9a97f",
+  "nodes": [
+    {
+      "id": "data_understanding",
+      "type": "main_agent",
+      "label": "Data Understanding",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 50
+      },
+      "status": "completed",
+      "created_by": null,
+      "reason": "Analyze dataset semantics and structure",
+      "updated_at": "2025-11-30T20:31:55.994973"
+    },
+    {
+      "id": "preprocessing",
+      "type": "main_agent",
+      "label": "Preprocessing",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 200
+      },
+      "status": "completed",
+      "created_by": null,
+      "reason": "Clean and prepare data",
+      "updated_at": "2025-11-30T20:32:02.411865"
+    },
+    {
+      "id": "model_selection",
+      "type": "main_agent",
+      "label": "Model Selection",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 350
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Train and compare ML models"
+    },
+    {
+      "id": "hyperparameter_tuning",
+      "type": "main_agent",
+      "label": "Hyperparameter Tuning",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 500
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Optimize model parameters"
+    },
+    {
+      "id": "prediction",
+      "type": "main_agent",
+      "label": "Prediction",
+      "parent": null,
+      "position": {
+        "x": 100,
+        "y": 650
+      },
+      "status": "pending",
+      "created_by": null,
+      "reason": "Generate predictions"
+    },
+    {
+      "id": "preprocessing_rag",
+      "type": "rag",
+      "label": "RAG Knowledge Agent",
+      "parent": "preprocessing",
+      "position": {
+        "x": 350,
+        "y": 150
+      },
+      "status": "completed",
+      "created_by": "preprocessing",
+      "reason": "Provides preprocessing best practices from knowledge base",
+      "created_at": "2025-11-30T20:31:56.001849",
+      "updated_at": "2025-11-30T20:31:57.970521"
+    },
+    {
+      "id": "preprocessing_llm_planner",
+      "type": "decision",
+      "label": "LLM Strategy Planner",
+      "parent": "preprocessing",
+      "position": {
+        "x": 350,
+        "y": 230
+      },
+      "status": "completed",
+      "created_by": "preprocessing",
+      "reason": "Decides which preprocessing steps to apply based on data analysis",
+      "created_at": "2025-11-30T20:31:57.971311",
+      "updated_at": "2025-11-30T20:32:02.411633"
+    }
+  ],
+  "edges": [
+    {
+      "from": "data_understanding",
+      "to": "preprocessing",
+      "type": "sequential"
+    },
+    {
+      "from": "preprocessing",
+      "to": "model_selection",
+      "type": "sequential"
+    },
+    {
+      "from": "model_selection",
+      "to": "hyperparameter_tuning",
+      "type": "sequential"
+    },
+    {
+      "from": "hyperparameter_tuning",
+      "to": "prediction",
+      "type": "sequential"
+    },
+    {
+      "from": "preprocessing",
+      "to": "preprocessing_rag",
+      "type": "consults",
+      "label": "asks"
+    },
+    {
+      "from": "preprocessing_rag",
+      "to": "preprocessing",
+      "type": "informs",
+      "label": "recommends"
+    },
+    {
+      "from": "preprocessing",
+      "to": "preprocessing_llm_planner",
+      "type": "consults",
+      "label": "asks"
+    },
+    {
+      "from": "preprocessing_llm_planner",
+      "to": "preprocessing",
+      "type": "informs",
+      "label": "recommends"
+    }
+  ],
+  "node_count": 7,
+  "main_agent_count": 5,
+  "sub_agent_count": 0
+}
